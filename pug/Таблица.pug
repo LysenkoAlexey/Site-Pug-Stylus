@@ -1,0 +1,41 @@
+extends template
+block variables
+	-	number = ['1','2','3','4','5']
+	-	debut = ['Сицилианская защита', 'Открытое начало', 'Дебют Рети', 'Английское начало', 'Староиндийское начало']
+	-	moves = ['1.e4 с5', '1.е4 е5', '1.Nf3', '1.c4', '1.g3']
+	-	parties = ['115998', '49163', '59276', '45320', '5864']
+	-	percent = ['46.4', '44.7', '55.7', '56.3', '55']
+	-	var title = 'Таблица'
+	- const columnNames = ['№', 'Дебют','Ходы','Количество партий','Процент побед']
+block content
+	form
+		ul
+			li Расположить по:
+			label 
+				input(type='radio' name='quest_1' value='1_1') 
+				| Возрастанию
+			label 
+				input(type='radio' name='quest_1' value='1_2')
+				| Убыванию
+			li Сортировать по:
+			label 
+				input(type='radio' name='quest_2' value='2_1') 
+				| Количеству партий
+			label 
+				input(type='radio' name='quest_2' value='2_2')
+				| Проценту побед
+		input(type='button' value='Сортировать')
+
+	-	var i = 0
+	table(border=2 cellpadding=5)
+		tr
+			each name in columnNames
+				td=name
+		while i<5
+			tr
+				td=number[i]
+				td=debut[i]
+				td=moves[i]
+				td=parties[i]
+				td=percent[i]
+			-	i++
